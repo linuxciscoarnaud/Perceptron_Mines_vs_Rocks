@@ -16,7 +16,7 @@ public class Param {
 	private String testDataFileName = "sonarTesDdata.csv";
 	
 	private int trainN = 208;
-	private int testN = 3;
+	private int testN = 11;
 	private int nTn = 60;
 	
 	private int epochs = 2000;

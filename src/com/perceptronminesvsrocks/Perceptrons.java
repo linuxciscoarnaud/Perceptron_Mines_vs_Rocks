@@ -79,8 +79,8 @@ public class Perceptrons {
 
 		Param param = new Param();
 		
-        final int train_N = param.getTrainN();  // number of training data
-        final int test_N = param.getTestN();   // number of test data
+        final int train_N = param.getTrainN();   // number of training data
+        final int test_N = param.getTestN();                       // number of test data
         final int nIn = param.getNTn();        // dimensions of input data
         
         double[][] train_X = new double[train_N][nIn];  // input data for training
@@ -129,8 +129,7 @@ public class Perceptrons {
             	break;
         	}
         }
-        
-        
+              
         //
         // Test Mines vs Rocks model
         //
@@ -138,6 +137,11 @@ public class Perceptrons {
         for (int i = 0; i < test_N; i++) {
         	predicted_T[i] = classifier.predict(test_X[i]);
         }
+        
+        //I want to display the predicted labels of testing data (to be removed later)
+        for (int p = 0; p < predicted_T.length; p++) {
+			System.out.println(p+1 + " predicted data: label = " + predicted_T[p]);
+		}
         
         
         //

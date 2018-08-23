@@ -73,5 +73,12 @@ public class Dataset {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		 
+		//I want to display the real labels of testing data (to be removed later)
+		for (int p = 0; p < test_T.length; p++) {
+			System.out.println(p+1 + " test data: label = " + test_T[p]);
+		}
+		System.out.println();
+		System.out.println();
 	}
 }
