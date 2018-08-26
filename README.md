@@ -7,6 +7,8 @@ L’implémentation est réalisée à partir de zéro et ne fait intervenir aucu
 
 Les données d'entrainement et ceux de test ont été développé en collaboration avec R. Paul Gorman du Centre de technologie aérospatiale Allied-Signal. Elles peuvent être téléchargées via le lien suivant : https://archive.ics.uci.edu/ml/datasets/Connectionist+Bench+(Sonar,+Mines+vs.+Rocks) Elles sont respectivement chargées en mémoire à partir des fichiers sonar.all-data.csv et sonarTesDdata.csv qui se trouvent dans le répertoire du code source. Les 208 données d’entrainement ainsi que leurs étiquettes, telles que fournies sont facilement lues et chargées en mémoire par la fonction void LoadTrainingData(double[][] train_X, int[] train_T) de la classe Dataset.java. En revanche, les données de test et leurs étiquettes telles que fournies n’ont pas pu directement être lues (J’y travaille encore). J’ai dû pour l’instant, manuellement les mettre sous une forme semblable à celle des données d’entrainement afin de pouvoir les charger en mémoire par la fonction void LoadTestData(double[][] test_X, int[] test_T). Pour l’instant, 20 données de test sont disponibles.
 
+Le fichier resultsFile.xls a été généré dans le repertoire de l'application afin de permettre une visualisation et une comparaison des résultats obtenus. Toutes les informations sont contenues dans le feuille "Mines_vs_Rocks". Le fichier comporte 3 colonnes qui representent respectivement les étiquettes des données de test, les étiquettes des données de test qui ont été prédites et enfin les valeurs réelles de prédiction avant application de la fonction d'activation.
+
 L'évaluation de la performance du programme, en tenant compte des données de test disponibles donne le résultat suivant:
 
 Mines vs Rocks model evaluation
