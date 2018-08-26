@@ -5,7 +5,11 @@ package com.perceptronminesvsrocks;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
+
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
 
 /**
  * @author Arnaud
@@ -15,6 +19,7 @@ import java.util.Scanner;
 public class Dataset {
 
 	Param param = new Param();
+	Results results = new Results();
 	
 	public void LoadTrainingData(double[][] train_X, int[] train_T) {
 		
@@ -46,7 +51,7 @@ public class Dataset {
 	}
 	
 	
-	public void LoadTestData(double[][] test_X, int[] test_T) {
+	public void LoadTestData(double[][] test_X, int[] test_T) throws RowsExceededException, WriteException, IOException {
 		
 		File file = new File(param.getTestDataFileName());
 		try {
@@ -74,11 +79,5 @@ public class Dataset {
 			e.printStackTrace();
 		}
 		 
-		//I want to display the real labels of testing data (to be removed later)
-		for (int p = 0; p < test_T.length; p++) {
-			System.out.println(p+1 + " test data: label = " + test_T[p]);
-		}
-		System.out.println();
-		System.out.println();
 	}
 }

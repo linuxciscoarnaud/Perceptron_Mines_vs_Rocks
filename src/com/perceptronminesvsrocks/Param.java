@@ -14,9 +14,13 @@ public class Param {
 	// constants
 	private String trainDataFileName = "sonar.all-data.csv";
 	private String testDataFileName = "sonarTesDdata.csv";
+	private String resultsFileName = "resultsFile.xls";
+	
+	private String mines_vs_rocksSheetName = "Mines_vs_Rocks";
+	private String parametersSheetName;
 	
 	private int trainN = 208;
-	private int testN = 11;
+	private int testN = 20;
 	private int nTn = 60;
 	
 	private int epochs = 2000;
@@ -30,6 +34,17 @@ public class Param {
 	
 	public String getTestDataFileName() {
 		return testDataFileName;
+	}
+	public String getResultsFileName() {
+		return resultsFileName;
+	}
+	
+	public String getMines_vs_rocksSheetName() {
+		return mines_vs_rocksSheetName;
+	}
+	
+	public String getParametersSheetName() {
+		return parametersSheetName;
 	}
 	
 	public int getTrainN() {

@@ -3,6 +3,12 @@
  */
 package com.perceptronminesvsrocks;
 
+import java.io.IOException;
+
+import jxl.read.biff.BiffException;
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
+
 /**
  * @author Arnaud
  *
@@ -13,7 +19,10 @@ public class Perceptrons {
     private double[] w;  // weight vector of perceptrons
     private double bias;  // bias
     
+    static Param param = new Param();
     ActivationFunction activationFunction;
+    static double[] val = new double[param.getTestN()];
+    int index;
 	
     // Constructor
     public Perceptrons(int nIn, double bias) {
@@ -24,8 +33,10 @@ public class Perceptrons {
     }
     
     // trainer
-    public int train(double[] x, int t, double learningRate) {
+    public int train(double[] x, int t, double learningRate) throws IOException, BiffException, WriteException {
     	activationFunction = new ActivationFunction();
+    	Results results = new Results();
+    	
     	int classified = 0;
     	int activatedVal = 0;
         double c = 0.;
@@ -41,6 +52,9 @@ public class Perceptrons {
         if ((activatedVal == 1 && t == 1) || (activatedVal == -1 && t == -1)) {
         	classified = 1;       	
         } else { // then gradient descent needs to be applied
+        	// first write weight and bias on file
+        	//results.writeParameters(w, bias);
+        	
         	//update the parameter
         	for (int i = 0; i < nIn; i++) {
         		w[i] += learningRate * (t - activatedVal) * x[i];
@@ -63,14 +77,20 @@ public class Perceptrons {
         	preActivation += w[i] * x[i];
         }
         preActivation += bias;
+        val[index] = preActivation;
+        index++;
         
         return activationFunction.theshold(preActivation);
     }
     
 	/**
 	 * @param args
+	 * @throws IOException 
+	 * @throws WriteException 
+	 * @throws RowsExceededException 
+	 * @throws BiffException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws RowsExceededException, WriteException, IOException, BiffException {
 		// TODO Auto-generated method stub
 
 		//
@@ -78,6 +98,7 @@ public class Perceptrons {
         //
 
 		Param param = new Param();
+		Results results = new Results();
 		
         final int train_N = param.getTrainN();   // number of training data
         final int test_N = param.getTestN();                       // number of test data
@@ -138,10 +159,8 @@ public class Perceptrons {
         	predicted_T[i] = classifier.predict(test_X[i]);
         }
         
-        //I want to display the predicted labels of testing data (to be removed later)
-        for (int p = 0; p < predicted_T.length; p++) {
-			System.out.println(p+1 + " predicted data: label = " + predicted_T[p]);
-		}
+        // write labels of test and predicted data on .xls file
+        results.writeLabels(test_T, predicted_T, val);
         
         
         //
