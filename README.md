@@ -19,4 +19,4 @@ Ce résultat montre que:
 
 -	Sur l'ensemble des données de test, 60.0% sont correctement classifiées.
 -	Sur l'ensemble des données de test ayant effectivement rebondies sur des mines, 55.6% d'entre elles ont été prédites comme telles.
--Toutes les données de test qui ont été prédites comme ayant rebondies sur des mines ont effectivement rebondi sur des mines (100%).
+- Toutes les données de test qui ont été prédites comme ayant rebondies sur des mines ont effectivement rebondi sur des mines (100%).
