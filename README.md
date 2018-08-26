@@ -13,7 +13,7 @@ L'évaluation de la performance du programme, en tenant compte des données de t
 
 Mines vs Rocks model evaluation
 
-Accuracy: 60.0.8 % Precision: 55.6 % Recall: 100.0 %
+Accuracy: 60.0 % Precision: 55.6 % Recall: 100.0 %
 
 Ce résultat montre que:
 
